@@ -1,0 +1,51 @@
+/*
+
+--------------------------------------------
+
+    Endpapers.jsxinc
+    A CoverBuilder Plugin
+    Version 0.1
+
+    Bruno Herfst 2018
+    mail@brunoherfst.com
+
+--------------------------------------------
+
+    Create endpapers on the fly
+
+--------------------------------------------
+
+*/
+
+#target indesign
+#targetengine "Endpapers"
+
+(function() {
+    //////////////
+    // privates //
+    //////////////
+
+    // private functions
+    //--------------
+    function main(CoverBuilder){
+        // Run the script file
+        try {
+            var TARGETPATH = CoverBuilder.PathTo.plugins + "Endpapers_Resources" + CoverBuilder.Settings.Platform.trailSlash + "Endpapers.jsxinc";
+            $.evalFile(new File(TARGETPATH));
+        } catch(err) {
+            alert("CoverBuilder Plugin Export:\n" + err.message + " (Line " + err.line + " in file " + err.fileName + ")");
+        }
+    }
+
+    ////////////
+    // expose //
+    ////////////
+    // Return an object exposed to the public
+    return {
+        plugin_name         : "Endpapers", // Your plugin name inside the CoverBuilder menu
+        add_to_menu         : true, // Set to true to add this plugin to the cover-builder menu
+        launch_on_load      : false, // Set to true to run this script after a fresh cover build
+        menu_items          : [{f : main, name : "Create..."}], // You can add multiple menu items here that will show up under your plugin name
+        init                : main // this function gets called on launch when launch_on_load is set to true
+    };
+})();
