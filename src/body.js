@@ -11,29 +11,25 @@ myApp.createEndpapers = function ( CB ) {
                  marginLeft  : 0, 
                  marginRight : 0 }
 
-    var sourceDoc = CB.Tools.getActiveCover(CB, true, true);
-    if( sourceDoc != null ) {
-        if( sourceDoc.isValid ) {
+    var sourceDoc = app.documents[0];
+    if( sourceDoc.isValid ) {
+        booktitle = sourceDoc.metadataPreferences.documentTitle;
+ 
+        // OK, lets get the width, height and margins of source document
+        // An InDesign document has at least one page
+        // Save old rulers and set rulers to mm to get all measurements in mm
+        var originalRulers = CB.Tools.setRuler(sourceDoc, {units : 0});
 
-            // Don't save title in original doc as it is not guaranteed the same book
-            booktitle = CB.Tools.getBookTitle(CB, sourceDoc, true);
-            
-            // OK, lets get the width, height and margins of current doc
-            // An InDesign document has at least one page
-            // Save old rulers and set rulers to points to get all measurements in mm
-            var originalRulers = CB.Tools.setRuler(sourceDoc, {units : 0});
-    
-            data = { width       : sourceDoc.documentPreferences.pageWidth,
-                     height      : sourceDoc.documentPreferences.pageHeight,
-                     bleed       : sourceDoc.documentPreferences.documentBleedTopOffset,
-                     marginTop   : sourceDoc.pages[0].marginPreferences.top,
-                     marginBot   : sourceDoc.pages[0].marginPreferences.bottom, 
-                     marginLeft  : sourceDoc.pages[0].marginPreferences.left, 
-                     marginRight : sourceDoc.pages[0].marginPreferences.right }
+        data = { width       : sourceDoc.documentPreferences.pageWidth,
+                 height      : sourceDoc.documentPreferences.pageHeight,
+                 bleed       : sourceDoc.documentPreferences.documentBleedTopOffset,
+                 marginTop   : sourceDoc.pages[0].marginPreferences.top,
+                 marginBot   : sourceDoc.pages[0].marginPreferences.bottom, 
+                 marginLeft  : sourceDoc.pages[0].marginPreferences.left, 
+                 marginRight : sourceDoc.pages[0].marginPreferences.right }
 
-            // reset original rulers
-            CB.Tools.setRuler(sourceDoc, originalRulers);
-        }
+        // reset original rulers
+        CB.Tools.setRuler(sourceDoc, originalRulers);
     }
 
     // Create dialog for size
