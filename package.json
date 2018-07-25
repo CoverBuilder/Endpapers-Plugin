@@ -2,10 +2,10 @@
   "name": "CoverBuilder.Plugin.Endpapers",
   "version": "0.0.1",
   "description": "A tool to build endpapers in InDesign.",
-  "main": "main.js",
+  "main": "endpapers.js",
   "scripts": {
     "buildEnv": "curl https://raw.githubusercontent.com/ES-Collection/build-node-venv/master/build-node-venv.sh > ./.bnv.sh && chmod +x ./.bnv.sh && ./.bnv.sh && rm ./.bnv.sh",
-    "bundle": "exsbundlr -i ./main.js -o ./staging/com.brunoherfst.endpapers/Endpapers_Resources/Endpapers.jsxinc"
+    "bundle": "exsbundlr -i ./endpapers.js -o ./staging/com.brunoherfst.endpapers/Endpapers_Resources/Endpapers.jsxinc" 
   },
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "keywords": [
     "extendscript"
   ],
-  "contributers": "extendscript.org",
+  "contributors": "extendscript.org",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CoverBuilder/Endpapers-Plugin/issues"
@@ -22,5 +22,11 @@
   "homepage": "https://github.com/CoverBuilder/Endpapers-Plugin",
   "devDependencies": {
     "extendscript-bundlr": ">=0.3.1"
+  },
+  "peerDependencies": {
+    "@extendscript/modules.init": "1.x"
+  },
+  "dependencies": {
+    "npm-install-peers": "^1.2.1"
   }
 }
