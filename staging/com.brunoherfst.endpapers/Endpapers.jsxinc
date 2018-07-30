@@ -11,7 +11,7 @@
 
 --------------------------------------------
 
-    Create endpapers on the fly
+    Create end-papers on the fly
 
 --------------------------------------------
 
@@ -31,7 +31,8 @@
         // Run the script file
         try {
             var TARGETPATH = CoverBuilder.PathTo.plugins + "Endpapers_Resources" + CoverBuilder.Settings.Platform.trailSlash + "Endpapers.jsxinc";
-            $.evalFile(new File(TARGETPATH));
+            var EndpaperPlug = $.evalFile(new File(TARGETPATH));
+            EndpaperPlug.create();
         } catch(err) {
             alert("CoverBuilder Plugin Export:\n" + err.message + " (Line " + err.line + " in file " + err.fileName + ")");
         }

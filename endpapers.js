@@ -1,33 +1,33 @@
 /*
   
-  Endpapers: A CoverBuilder plugin
+  Endpapers: A CoverBuilder plug-in
 
   Create end-papers in InDesign
 
-  https://github.com/CoverBuilder/Endpapers
+  https://github.com/CoverBuilder/Endpapers-Plugin
 
   Bruno Herfst 2018
 
 */
 
-targetengine "Endpapers"
+(function() {
 
-var myApp = {
-    version: 1.0
-};
+    var Endpapers = {
+        version: 1.0
+    };
 
-//-------------
-// Load Modules
-//-------------
-#include 'node_modules/@extendscript/modules.init/modules.init.js'
+    //--------------------------
+    // Load Modules
+    //--------------------------
 
-//-------------
-// Load Application
-//-------------
+    #include 'node_modules/@extendscript/modules.init/init.js'
+    #include 'node_modules/@extendscript/ind.util.rulers/rulers.js'
 
-#include 'src/body.js'
+    //--------------------------
+    // Load Application
+    //--------------------------
+    #include 'src/endpapers.create.js'
 
-#include 'src/foot.js'
+    return Endpapers;
 
-//-------------
-// EOF
+})();
