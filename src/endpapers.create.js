@@ -1,7 +1,8 @@
 Endpapers.create = function ( ) {
 
-    // Load the rulers util
-    var Rulers = Sky.getUtil("rulers");
+    // Load ExtendScript-Modules
+    var Rulers    = Sky.getUtil("rulers");
+    var LayerUtil = Sky.getUtil("layer");
 
     var booktitle = "Untitled";
     
@@ -20,7 +21,7 @@ Endpapers.create = function ( ) {
         // OK, lets get the width, height and margins of source document
         // An InDesign document has at least one page
         // Save old rulers and set rulers to mm to get all measurements in mm
-        var originalRulers = Ruler.set(sourceDoc, {units : 0});
+        var originalRulers = Rulers.set(sourceDoc, "mm");
 
         data = { width       : sourceDoc.documentPreferences.pageWidth,
                  height      : sourceDoc.documentPreferences.pageHeight,
@@ -31,7 +32,7 @@ Endpapers.create = function ( ) {
                  marginRight : sourceDoc.pages[0].marginPreferences.right }
 
         // reset original rulers
-        Ruler.set(sourceDoc, originalRulers);
+        Rulers.set(sourceDoc, originalRulers);
     };
 
     // Create dialog for size
@@ -45,22 +46,23 @@ Endpapers.create = function ( ) {
                 var bleedLabel  = staticTexts.add({staticLabel:"Bleed:"});
             }
             with(dialogColumns.add()){
-                var widthField  = measurementEditboxes.add({editUnits: MeasurementUnits.MILLIMETERS,editValue:CB.NumCon.convert(CB, data.width,  0, 2, 3)});
-                var heightField = measurementEditboxes.add({editUnits: MeasurementUnits.MILLIMETERS,editValue:CB.NumCon.convert(CB, data.height, 0, 2, 3)});
-                var bleedField  = measurementEditboxes.add({editUnits: MeasurementUnits.MILLIMETERS,editValue:CB.NumCon.convert(CB, data.bleed,  0, 2, 3)});
+                // MeasurementEditbox values are always in points
+                var widthField  = measurementEditboxes.add({ editUnits: MeasurementUnits.MILLIMETERS, editValue: Rulers.convert(data.width,  "mm", "pt", 3) });
+                var heightField = measurementEditboxes.add({ editUnits: MeasurementUnits.MILLIMETERS, editValue: Rulers.convert(data.height, "mm", "pt", 3) });
+                var bleedField  = measurementEditboxes.add({ editUnits: MeasurementUnits.MILLIMETERS, editValue: Rulers.convert(data.bleed,  "mm", "pt", 3) });
             } 
         }
     };
     
     if(dlg.show() == true){
-        data.height = CB.NumCon.convert(CB, heightField.editValue, 2, 0, 3); 
-        data.width  = CB.NumCon.convert(CB, widthField.editValue,  2, 0, 3); 
-        data.bleed  = CB.NumCon.convert(CB, bleedField.editValue,  2, 0, 3); 
+        data.height = Rulers.convert(heightField.editValue, "pt", "mm", 3); 
+        data.width  = Rulers.convert(widthField.editValue,  "pt", "mm", 3); 
+        data.bleed  = Rulers.convert(bleedField.editValue,  "pt", "mm", 3); 
     } else {
         return "User pressed cancel";
     };
-    
-    // Then create a new doc based on those values
+
+    // Create a new doc based on those values
     
     //Set the application default margin preferences.
     with (app.marginPreferences){
@@ -85,7 +87,7 @@ Endpapers.create = function ( ) {
     var doc = app.documents.add();
     
     // set rulers to mm
-    var originalRulers = Ruler.set(doc, {units : 0});
+    var originalRulers = Rulers.set( doc, "mm" );
 
     // safe the title as meta data
     doc.metadataPreferences.documentTitle = booktitle;
@@ -110,9 +112,10 @@ Endpapers.create = function ( ) {
     var myEndPaperSpread = doc.spreads.add(LocationOptions.AFTER,doc.spreads[0]);
     
     // get Layer
-    var myLayer = CB.Tools.getAndSelectLayer(doc, "Art");
+    var myLayer = LayerUtil.getSelect(doc, "Art", true);
+
     // unlock layer
-    var originalLock = CB.Tools.layerLocked(myLayer, false);
+    var originalLock = LayerUtil.locker(myLayer, false);
 
     var myRect = CB.Tools.newRect2SpreadBleed(CB, doc, myEndPaperSpread, myLayer, 0);
     myRect.contentType = ContentType.GRAPHIC_TYPE;

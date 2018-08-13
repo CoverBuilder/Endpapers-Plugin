@@ -1,6 +1,6 @@
 {
   "name": "CoverBuilder.Plugin.Endpapers",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Build end-papers in InDesign.",
   "main": "endpapers.js",
   "scripts": {
@@ -26,9 +26,8 @@
     "extendscript-bundlr": ">=0.3.1"
   },
   "peerDependencies": {
-    "@extendscript/modules.init": ">=2.0.0"
-  },
-  "dependencies": {
+    "@extendscript/modules.init": ">=2.0.0",
+    "@extendscript/ind.util.layer": ">=1.0.0",
     "@extendscript/ind.util.rulers": ">=3.0.0"
   }
 }
