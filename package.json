@@ -5,7 +5,7 @@
   "main": "endpapers.js",
   "scripts": {
     "buildEnv": "curl https://raw.githubusercontent.com/ES-Collection/build-node-venv/master/build-node-venv.sh > ./.bnv.sh && chmod +x ./.bnv.sh && ./.bnv.sh && rm ./.bnv.sh",
-    "bundle": "exsbundlr -i ./endpapers.js -o ./staging/com.brunoherfst.endpapers/Endpapers_Resources/Endpapers.jsxinc",
+    "bundle": "exsbundlr --missing -i ./endpapers.js -o ./staging/com.brunoherfst.endpapers/Endpapers_Resources/Endpapers.jsxinc",
     "test": "node ./test/test.js"
   },
   "repository": {
