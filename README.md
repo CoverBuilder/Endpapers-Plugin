@@ -1,4 +1,4 @@
-# Endpapers
+# ![icon](icon/EP_icon_32x32.png) Endpapers
 
 > A CoverBuilder Plugin
 
