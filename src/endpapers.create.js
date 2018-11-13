@@ -3,6 +3,7 @@ Endpapers.create = function ( ) {
     // Load ExtendScript-Modules
     var Rulers    = Sky.getUtil("rulers");
     var LayerUtil = Sky.getUtil("layer");
+    var PageItems = Sky.getUtil("pageitems");
 
     var booktitle = "Untitled";
     
@@ -117,10 +118,9 @@ Endpapers.create = function ( ) {
     // unlock layer
     var originalLock = LayerUtil.locker(myLayer, false);
 
-    var myRect = CB.Tools.newRect2SpreadBleed(CB, doc, myEndPaperSpread, myLayer, 0);
-    myRect.contentType = ContentType.GRAPHIC_TYPE;
-    
-    // restore layer
+    var myRect = addRectToBleed( myEndPaperSpread, {itemLayer:myLayer, contentType:ContentType.GRAPHIC_TYPE} );
+
+    // restore layer lock
     CB.Tools.layerLocked(myLayer, originalLock);
     
     // duplicate the page
@@ -134,7 +134,6 @@ Endpapers.create = function ( ) {
     }
 
     // Add the Stuck-down text on first and last page
-
     var myParagraphStyle = CB.Slugs.getMeasureParagraphStyle(CB, doc, "measurements", CB.Settings.registration_font);
     var regLayer         = CB.Tools.getAndSelectLayer(  doc, "Registration");
 

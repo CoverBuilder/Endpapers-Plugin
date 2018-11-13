@@ -22,6 +22,7 @@
 
     #include 'node_modules/@extendscript/modules.init/init.js'
     #include 'node_modules/@extendscript/ind.util.rulers/rulers.js'
+    #include 'node_modules/@extendscript/ind.util.pageitems/pageitems.js'
 
     //--------------------------
     // Load Application
