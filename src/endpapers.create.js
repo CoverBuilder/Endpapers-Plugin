@@ -113,16 +113,15 @@ Endpapers.create = function ( ) {
     var myEndPaperSpread = doc.spreads.add(LocationOptions.AFTER,doc.spreads[0]);
     
     // get Layer
-    var myLayer = LayerUtil.getSelect(doc, "Art", true);
-
+    var myLayer = LayerUtil.select(doc, "Art", true);
     // unlock layer
     var originalLock = LayerUtil.locker(myLayer, false);
 
-    var myRect = addRectToBleed( myEndPaperSpread, {itemLayer:myLayer, contentType:ContentType.GRAPHIC_TYPE} );
+    var myRect = PageItems.addRectToBleed( myEndPaperSpread, {itemLayer:myLayer, contentType:ContentType.GRAPHIC_TYPE} );
 
     // restore layer lock
-    CB.Tools.layerLocked(myLayer, originalLock);
-    
+    LayerUtil.locker(myLayer, originalLock);
+
     // duplicate the page
     doc.spreads[0].duplicate(LocationOptions.AFTER, doc.spreads[1]);
     
@@ -133,18 +132,21 @@ Endpapers.create = function ( ) {
         doc.spreads[i].duplicate(LocationOptions.AFTER, doc.spreads[doc.spreads.length-1]);
     }
 
-    // Add the Stuck-down text on first and last page
-    var myParagraphStyle = CB.Slugs.getMeasureParagraphStyle(CB, doc, "measurements", CB.Settings.registration_font);
-    var regLayer         = CB.Tools.getAndSelectLayer(  doc, "Registration");
-
-    var myPage = doc.pages[0];
-    var PageIO = CB.Tools.makePageInfoObject(CB, doc, myPage, 0);
-    CB.Tools.addTextFrame(CB, myPage, PageIO.bounds, "< Stuckdown >", myParagraphStyle, 0, "Stuck-down");
-
-    myPage = doc.pages[doc.pages.length-1];
-    PageIO = CB.Tools.makePageInfoObject(CB, doc, myPage, 0);
-    CB.Tools.addTextFrame(CB, myPage, PageIO.bounds, "< Stuckdown >", myParagraphStyle, 0, "Stuck-down");
+    doc.pages[0].label = "Stuckdown";
+    doc.pages[doc.pages.length-1].label = "Stuckdown";
     
+    // Add the Stuck-down text on first and last page
+    //var myParagraphStyle = CB.Slugs.getMeasureParagraphStyle(CB, doc, "measurements", CB.Settings.registration_font);
+    //var regLayer         = CB.Tools.getAndSelectLayer(  doc, "Registration");
+
+    //var myPage = doc.pages[0];
+    //var PageIO = CB.Tools.makePageInfoObject(CB, doc, myPage, 0);
+    //CB.Tools.addTextFrame(CB, myPage, PageIO.bounds, "< Stuckdown >", myParagraphStyle, 0, "Stuck-down");
+
+    //myPage = doc.pages[doc.pages.length-1];
+    //PageIO = CB.Tools.makePageInfoObject(CB, doc, myPage, 0);
+    //CB.Tools.addTextFrame(CB, myPage, PageIO.bounds, "< Stuckdown >", myParagraphStyle, 0, "Stuck-down");
+
     //Reset the application default margin preferences to their former state.
     with (app.marginPreferences){
         top    = originalTop;

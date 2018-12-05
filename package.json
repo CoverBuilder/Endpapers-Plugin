@@ -23,11 +23,21 @@
   "homepage": "https://github.com/CoverBuilder/Endpapers-Plugin",
   "devDependencies": {
     "@extendscript/tap-es": ">=1.0.4",
-    "extendscript-bundlr": ">=0.3.1"
+    "extendscript-bundlr": ">=0.3.1",
+    "@extendscript/aes.patch.bundle.array": "^2.0.1",
+    "@extendscript/ind.util.layer": "^2.0.0",
+    "@extendscript/ind.util.pageitems": "^2.0.1",
+    "@extendscript/ind.util.pages": "^1.0.3",
+    "@extendscript/ind.util.rulers": "^4.0.0",
+    "@extendscript/modules.init": "^2.2.0"
   },
   "peerDependencies": {
     "@extendscript/modules.init": ">=2.0.0",
+    "@extendscript/ind.util.rulers": ">=3.0.0",
     "@extendscript/ind.util.layer": ">=1.0.0",
-    "@extendscript/ind.util.rulers": ">=3.0.0"
+    "@extendscript/ind.util.pageitems": "^2.0.0"
+  },
+  "dependencies": {
+    "@extendscript/ind.util.bounds": "^1.1.0"
   }
 }

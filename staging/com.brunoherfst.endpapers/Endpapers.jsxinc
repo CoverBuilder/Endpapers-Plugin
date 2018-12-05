@@ -31,12 +31,12 @@
         // Run the script file
         try {
             var TARGETPATH = CoverBuilder.PathTo.plugins + "Endpapers_Resources" + CoverBuilder.Settings.Platform.trailSlash + "Endpapers.jsxinc";
-            var EndpaperPlug = $.evalFile(new File(TARGETPATH));
-            EndpaperPlug.create();
+            var Endpapers = $.evalFile(new File(TARGETPATH));
+            Endpapers.create();
         } catch(err) {
-            alert("CoverBuilder Plugin Export:\n" + err.message + " (Line " + err.line + " in file " + err.fileName + ")");
+            alert("CoverBuilder Plugin Endpapers:\n" + err.message + " (Line " + err.line + " in file " + err.fileName + ")");
         }
-    }
+    };
 
     ////////////
     // expose //
