@@ -1,9 +1,17 @@
 Endpapers.create = function ( ) {
 
+    var LoadCallback = function ( err, module ){
+        // Throws an error when dependency could not be loaded...
+        if( err instanceof Error || err instanceof TypeError ) {
+            throw new TypeError( err.message, $.fileName, $.line );
+        };
+        return module;
+    };
+
     // Load ExtendScript-Modules
-    var Rulers    = Sky.getUtil("rulers");
-    var LayerUtil = Sky.getUtil("layer");
-    var PageItems = Sky.getUtil("pageitems");
+    var Rulers    = Sky.getUtil("rulers",    LoadCallback);
+    var LayerUtil = Sky.getUtil("layer",     LoadCallback);
+    var PageItems = Sky.getUtil("pageitems", LoadCallback);
 
     var booktitle = "Untitled";
     
