@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-<macromedia-extension name = "Endpapers" id="com.brunoherfst.endpapers" requires-restart="true" version="1.0.0" icon="icon.png">
-
-	<author name = "Bruno Herfst" />
-	<update url = "http://coverbuilder.brunoherfst.com/downloads/endpapers/update.xml" />
-
-	<products>
-		<product familyname="InDesign" version="7" />
-	</products>
-
-	<files>
-		<file source="icon.png" destination="$ExtensionSpecificEMStore" />
-		<file source="Endpapers.jsxinc"    destination="$indesign/Scripts/startup scripts/CoverBuilder/Plugins" file-type="ordinary" shared="true" />
-		<file source="Endpapers_Resources" destination="$indesign/Scripts/startup scripts/CoverBuilder/Plugins" file-type="ordinary" shared="true" />
-	</files>
-
-	<description>
-		<![CDATA[Create endpapers on the fly.]]>
-	</description>
-
+<macromedia-extension name = "Endpapers" id="com.brunoherfst.endpapers" requires-restart="true" version="1.0.1" icon="icon.png">
+  <author name = "Bruno Herfst" />
+  <update url = "https://raw.githubusercontent.com/CoverBuilder/Endpapers-Plugin/master/update.xml" />
+  <products>
+    <product familyname="InDesign" version="7" />
+  </products>
+  <files>
+    <file source="icon.png" destination="$ExtensionSpecificEMStore" />
+    <file source="Endpapers.jsx"    destination="$indesign/Scripts/startup scripts"                      file-type="ordinary" shared="false" />
+    <file source="Endpapers.jsxinc" destination="$indesign/Scripts/startup scripts/CoverBuilder/Plugins" file-type="ordinary" shared="true"  />
+  </files>
+  <description>
+    <![CDATA[ Create endpapers on the fly. ]]>
+  </description>
 </macromedia-extension>

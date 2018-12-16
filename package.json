@@ -1,11 +1,13 @@
 {
   "name": "CoverBuilder.Plugin.Endpapers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Build end-papers in InDesign.",
   "main": "endpapers.js",
   "scripts": {
     "buildEnv": "curl https://raw.githubusercontent.com/ES-Collection/build-node-venv/master/build-node-venv.sh > ./.bnv.sh && chmod +x ./.bnv.sh && ./.bnv.sh && rm ./.bnv.sh",
-    "bundle": "exsbundlr --missing -i ./endpapers.js -o ./staging/com.brunoherfst.endpapers/Endpapers_Resources/Endpapers.jsxinc",
+    "bundle": "exsbundlr --missing -i ./endpapers.js -o ./staging/com.brunoherfst.endpapers/Endpapers.jsx",
+    "cert": "zxpbuild cert -c AU -s Victoria -g CoverBuilder -n \"CoverBuildern Endpapers\" -o ./staging/coverbuilder_cert.p12 -p",
+    "package": "zxpbuild package -i ./staging/com.brunoherfst.endpapers -o ./staging/com.brunoherfst.endpapers.zxp -c ./staging/coverbuilder_cert.p12 -p",
     "test": "node ./test/test.js"
   },
   "repository": {
@@ -22,22 +24,26 @@
   },
   "homepage": "https://github.com/CoverBuilder/Endpapers-Plugin",
   "devDependencies": {
+    "@extendscript/aes.patch.bundle.array": ">=2.0.1",
+    "@extendscript/ind.util.bounds": ">=1.1.0",
+    "@extendscript/ind.util.layer": ">=2.0.0",
+    "@extendscript/ind.util.menuloader": "^1.0.1",
+    "@extendscript/ind.util.pageitems": ">=2.0.1",
+    "@extendscript/ind.util.pages": ">=1.0.3",
+    "@extendscript/ind.util.rulers": ">=4.0.0",
+    "@extendscript/modules.init": ">=2.4.0",
     "@extendscript/tap-es": ">=1.0.4",
     "extendscript-bundlr": ">=0.3.1",
-    "@extendscript/aes.patch.bundle.array": "^2.0.1",
-    "@extendscript/ind.util.layer": "^2.0.0",
-    "@extendscript/ind.util.pageitems": "^2.0.1",
-    "@extendscript/ind.util.pages": "^1.0.3",
-    "@extendscript/ind.util.rulers": "^4.0.0",
-    "@extendscript/modules.init": "^2.2.0"
+    "zxp-builder": "^1.0.1"
   },
   "peerDependencies": {
-    "@extendscript/modules.init": ">=2.0.0",
-    "@extendscript/ind.util.rulers": ">=3.0.0",
+    "@extendscript/aes.patch.bundle.array": ">=2.0.1",
+    "@extendscript/ind.util.bounds": ">=1.1.0",
     "@extendscript/ind.util.layer": ">=1.0.0",
-    "@extendscript/ind.util.pageitems": "^2.0.0"
-  },
-  "dependencies": {
-    "@extendscript/ind.util.bounds": "^1.1.0"
+    "@extendscript/ind.util.menuloader": ">=1.0.0",
+    "@extendscript/ind.util.pageitems": ">=2.0.0",
+    "@extendscript/ind.util.pages": ">=1.0.3",
+    "@extendscript/ind.util.rulers": ">=3.0.0",
+    "@extendscript/modules.init": ">=2.4.0"
   }
 }

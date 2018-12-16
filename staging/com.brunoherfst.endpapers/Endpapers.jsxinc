@@ -4,7 +4,6 @@
 
     Endpapers.jsxinc
     A CoverBuilder Plugin
-    Version 0.1
 
     Bruno Herfst 2018
     mail@brunoherfst.com
@@ -17,7 +16,6 @@
 
 */
 
-#target indesign
 #targetengine "Endpapers"
 
 (function() {
@@ -27,11 +25,9 @@
 
     // private functions
     //--------------
-    function main(CoverBuilder){
-        // Run the script file
+    function main( CoverBuilder ){
+        // Run the script file from target engine
         try {
-            var TARGETPATH = CoverBuilder.PathTo.plugins + "Endpapers_Resources" + CoverBuilder.Settings.Platform.trailSlash + "Endpapers.jsxinc";
-            var Endpapers = $.evalFile(new File(TARGETPATH));
             Endpapers.create();
         } catch(err) {
             alert("CoverBuilder Plugin Endpapers:\n" + err.message + " (Line " + err.line + " in file " + err.fileName + ")");

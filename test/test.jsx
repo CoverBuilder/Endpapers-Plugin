@@ -8,4 +8,4 @@ var newUnits = Doc.viewPreferences.horizontalMeasurementUnits;
 
 Doc.close(SaveOptions.NO);
 
-$.writeln( String(newUnits) == "CICEROS" );
+$.writeln( true == "CICEROS" );
