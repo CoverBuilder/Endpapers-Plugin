@@ -6,7 +6,7 @@
   "scripts": {
     "buildEnv": "curl https://raw.githubusercontent.com/ES-Collection/build-node-venv/master/build-node-venv.sh > ./.bnv.sh && chmod +x ./.bnv.sh && ./.bnv.sh && rm ./.bnv.sh",
     "bundle": "exsbundlr --missing -i ./endpapers.js -o ./staging/com.brunoherfst.endpapers/Endpapers.jsx",
-    "cert": "zxpbuild cert -c AU -s Victoria -g CoverBuilder -n \"CoverBuildern Endpapers\" -o ./staging/coverbuilder_cert.p12 -p",
+    "cert": "zxpbuild cert -c AU -s Victoria -g CoverBuilder -n \"CoverBuilder Endpapers\" -o ./staging/coverbuilder_cert.p12 -p",
     "package": "zxpbuild package -i ./staging/com.brunoherfst.endpapers -o ./staging/com.brunoherfst.endpapers.zxp -c ./staging/coverbuilder_cert.p12 -p",
     "test": "node ./test/test.js"
   },
