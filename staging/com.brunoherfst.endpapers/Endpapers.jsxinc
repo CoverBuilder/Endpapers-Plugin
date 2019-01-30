@@ -16,7 +16,7 @@
 
 */
 
-#targetengine "Endpapers"
+#targetengine "CoverBuilder"
 
 (function() {
     //////////////
@@ -28,7 +28,7 @@
     function main( CoverBuilder ){
         // Run the script file from target engine
         try {
-            Endpapers.create();
+            Endpapers.showUI();
         } catch(err) {
             alert("CoverBuilder Plugin Endpapers:\n" + err.message + " (Line " + err.line + " in file " + err.fileName + ")");
         }

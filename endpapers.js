@@ -10,7 +10,7 @@
 
 */
 
-#targetengine "Endpapers"
+#targetengine "CoverBuilder"
 
 var Endpapers = {
     version: 1.0
@@ -33,7 +33,8 @@ var Endpapers = {
 // Load Application
 //--------------------------
 #include 'src/endpapers.create.js'
-#include 'src/endpapers.menu.js'
+#include 'src/endpapers.showUI.js'
+#include 'src/endpapers.loadMenu.js'
 
 //--------------------------
 // Load Menu

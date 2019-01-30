@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
   <ExtensionUpdateInformation>
-    <version>1.0.1</version>
+    <version>1.0.0</version>
     <download>https://raw.github.com/CoverBuilder/Endpapers-Plugin/blob/master/staging/com.brunoherfst.endpapers.zxp</download>
     <description><![CDATA[ Create endpapers on the fly. ]]></description>
 </ExtensionUpdateInformation>

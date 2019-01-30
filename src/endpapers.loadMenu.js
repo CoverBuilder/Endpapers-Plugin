@@ -7,7 +7,7 @@ Endpapers.loadMenu = function ( ) {
         path: [app.translateKeyString('$ID/TouchMenuFile'), app.translateKeyString("$ID/New")],
         loc: LocationOptions.AFTER,
         ref: app.translateKeyString("$ID/Document") + "...",
-        fun: Endpapers.create
+        fun: Endpapers.showUI
     });
 
     MenuLoader.load( MenuTemplate, true );

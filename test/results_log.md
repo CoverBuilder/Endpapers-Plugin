@@ -4,4 +4,6 @@ As tests may be run by different people on different platforms the results are l
 
 ## CoverBuilder.Plugin.Endpapers
 
-> Version 0.0.1
+> Version 1.0.0
+
+- ✔ Darwin indesign-13 pages.test.jsx: Endpapers [pass: 1, fail: 0]
