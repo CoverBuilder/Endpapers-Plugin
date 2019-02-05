@@ -33,6 +33,7 @@ var Endpapers = {
 // Load Application
 //--------------------------
 #include 'src/endpapers.create.js'
+#include 'src/endpapers.getDocSettings.js'
 #include 'src/endpapers.showUI.js'
 #include 'src/endpapers.loadMenu.js'
 
